@@ -9,6 +9,7 @@ var Provider = createProvider([
     index : require('./pages/index').default,
     login : require('./pages/login').default,
     officialDemo : require('./pages/officialDemo').default,
+    colastyleDemo : require('./pages/colastyleDemo').default,
 });
 
 render(<Provider />, document.getElementById('app'));

@@ -1,0 +1,25 @@
+{
+    // Use IntelliSense to learn about possible Node.js debug attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "DebugApp",
+            "type": "node",
+            "request": "launch",
+            "program": "${workspaceRoot}/node_modules/ts-node/dist/_bin.js",
+            "stopOnEntry": false,
+            "args": [],
+            "cwd": "${workspaceRoot}",
+            // "runtimeExecutable": "${workspaceRoot}/node_modules/.bin/nodemon",
+            "runtimeArgs": [
+                "-r", "ts-node/register",
+                "${workspaceRoot}/app.ts"
+            ],
+            "sourceMaps": true,
+            "console": "internalConsole",
+            "internalConsoleOptions": "openOnSessionStart"
+        }
+    ]
+}

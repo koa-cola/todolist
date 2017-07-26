@@ -1,27 +1,41 @@
-// import { Controller, Get, Use, Param, Body, Delete, Put, Post, QueryParam, View, Ctx, Response } from 'controller-decorators';
 var { Controller, Get, Use, Param, Body, Delete, Put, Post, QueryParam, View, Ctx, Response } = require('controller-decorators');
 import Ok from '../responses/ok';
-import checkUser from '../middlewares/checkUser'
 
 @Controller('')
-export default class  {
+export default class {
     @Get('/')
     @View('index')
-    index ( ) {}
+    index() { }
 
 
     @Get('/official-demo')
     @View('officialDemo')
-    officialDemo ( ) {}
+    officialDemo() { }
 
-    @Get('/login')
-    @View('login')
-    login ( ) {}
 
-    @Post('/login')
-    doLogin (@Ctx() ctx,  @Body() {name = 'harry', email = 'hcnode@gmail.com'}) {
-        ctx.session.user = {
-            name, email
-        }
+    @Get('/colastyle-demo')
+    @View('colastyleDemo')
+    colastyleDemo() { }
+
+    @Get('/api/getTodoList')
+    @Response(Ok)
+    async getTodoList( @QueryParam() param: any) {
+        var todoListManager = new app.managers.TodoListManager();
+        return await todoListManager.getTodoList(param.status);
     }
+
+    @Post('/api/createTodo')
+    @Response(Ok)
+    async createTodo( @Body() body: any) {
+        var todoListManager = new app.managers.TodoListManager();
+        return await todoListManager.createTodo(body);
+    }
+
+    @Get('/api/setCompleted')
+    @Response(Ok)
+    async setCompleted( @QueryParam() {_id, completed = true}: any) {
+        var todoListManager = new app.managers.TodoListManager();
+        return await todoListManager.setCompleted(_id, completed);
+    }
+
 }
