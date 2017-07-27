@@ -5,4 +5,5 @@
 * `cd todolist`
 * `npm i`
 * `npm run open`
-* 访问react-redux的官方todolist例子浏览器打开:http://localhost:3000
+* react-redux官方todolist例子:http://localhost:3000/official-demo
+* koa-cola风格的例子:http://localhost:3000/colastyle-demo
