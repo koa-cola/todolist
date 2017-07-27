@@ -18,8 +18,9 @@ export interface States { }
     return {
       addTodo: async (text) => {
         var api = new CreateTodo({ text });
-        await api.fetch();
-        dispatch(Object.assign(addTodo(text), api.result))
+        var data = await api.fetch();
+        var result = data.result.result;
+        dispatch(Object.assign(addTodo(text), result))
       }
     }
   })

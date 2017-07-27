@@ -15,19 +15,26 @@ import { GetTodoList, CreateTodo, SetCompleted } from '../../api'
 // let store = createStore(todoApp)
 
 export interface Props { 
+  dispatch? : any
+  todosData? : any
 }
 export interface States { }
 
 @asyncConnect([{
-  key: 'todos',
-  promise: async ({ params, helpers }) => {
+  key: 'todosData',
+  promise: async ({ params, helpers, store : {dispatch} }) => {
     var api = new GetTodoList({});
     var data = await api.fetch(helpers.ctx);
+    dispatch({
+      type : 'INIT_TODO',
+      data : data.result.result
+    });
     return data.result.result;
   }
 }])
 class ColastyleDemo extends React.Component<Props, States>   {
   constructor(props: Props) {
+    
     super(props);
   }
   static defaultProps = {
@@ -36,8 +43,9 @@ class ColastyleDemo extends React.Component<Props, States>   {
   static _reducer = {
     todos, visibilityFilter
   }
-  static childrenComponents = [AddTodo, FilterLink, VisibleTodoList]
+  static childrenComponents = {AddTodo, FilterLink, VisibleTodoList}
   componentDidMount() {
+    
   }
   render() {
     return <App />

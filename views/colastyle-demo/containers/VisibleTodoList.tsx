@@ -39,12 +39,7 @@ export interface Props {
   todos?: any
 }
 export interface States { }
-@asyncConnect([{
-  key: 'todos',
-  promise: async ({ params, helpers }) => {
-    return []
-  }
-}],
+@asyncConnect([],
   mapStateToProps,
   mapDispatchToProps
 )
