@@ -8,11 +8,7 @@ export interface Props {
 export interface States { }
 @asyncConnect([],
   // mapStateToProps
-  ({ }) => {
-    return {
-
-    }
-  },
+  null,
   // mapDispatchToProps
   (dispatch) => {
     return {
@@ -28,9 +24,6 @@ class AddTodo extends React.Component<Props, States>   {
   constructor(props: Props) {
     super(props);
   }
-  static defaultProps = {
-
-  };
   render() {
     let input
     return (

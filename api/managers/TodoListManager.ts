@@ -5,7 +5,7 @@ export default class {
         if(status){
             query.completed = status == 2;
         }
-        var result = await TodoList.find(status);
+        var result = await TodoList.find(query);
         return result;
     }
 
