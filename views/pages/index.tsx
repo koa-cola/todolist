@@ -1,23 +1,23 @@
 import * as React from 'react';
-import { Link } from "react-router";
-export interface Props{
-    
-}
+import { Link } from 'react-router';
+export interface Props {}
 export interface States {}
 
-class Index extends React.Component<Props, States>   {
+class Index extends React.Component<Props, States> {
   constructor(props: Props) {
-      super(props);
+    super(props);
   }
-  static defaultProps = {
-      
-  };
+  static defaultProps = {};
   render() {
-    return <div>
-      <h1>Wow koa-cola!</h1>
-      <Link to="/official-demo">官方例子</Link><br/>
-      <Link to="/colastyle-demo">koa-cola风格例子</Link><br/>
-    </div>
+    return (
+      <div>
+        <h1>Wow koa-cola!</h1>
+        <Link to="/official-demo">官方例子</Link>
+        <br />
+        <Link to="/colastyle-demo">koa-cola风格例子</Link>
+        <br />
+      </div>
+    );
   }
-};
-export default Index
+}
+export default Index;

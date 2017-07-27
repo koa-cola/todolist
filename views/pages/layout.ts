@@ -1,5 +1,5 @@
-export default function(html, store){
-    return `
+export default function(html, store) {
+  return `
 <!doctype html>
 <html>
     <body>
@@ -7,7 +7,5 @@ export default function(html, store){
     </body>
     <script src="/bundle.js"></script>
 </html>
-    `
+    `;
 }
-
-  
