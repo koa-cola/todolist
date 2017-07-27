@@ -1,15 +1,18 @@
 import * as React from 'react';
 import { render } from 'react-dom';
+import IndexController from '../api/controllers/IndexController'
+import index from './pages/index';
+import officialDemo from './pages/officialDemo';
+import colastyleDemo from './pages/colastyleDemo';
+
 var {createProvider} = require('koa-cola');
 
-// 暂时没有想到办法可以不使用fs方式require controllers目录和views目录下面所有的文件
 var Provider = createProvider([
-    require('../api/controllers/IndexController').default
+    IndexController
 ], {
-    index : require('./pages/index').default,
-    login : require('./pages/login').default,
-    officialDemo : require('./pages/officialDemo').default,
-    colastyleDemo : require('./pages/colastyleDemo').default,
+    index,
+    officialDemo,
+    colastyleDemo,
 });
 
 render(<Provider />, document.getElementById('app'));

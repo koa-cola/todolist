@@ -5,14 +5,11 @@ import { createStore } from 'redux'
 import AddTodo from '../official-demo/containers/AddTodo';
 import FilterLink from '../official-demo/containers/FilterLink';
 import VisibleTodoList from '../official-demo/containers/VisibleTodoList';
-var { ReduxAsyncConnect, asyncConnect, reducer, store  } = require('koa-cola').Decorators.view;
-var todoApp = require('../colastyle-demo/reducers').default
-var App = require('../colastyle-demo/components/App').default;
-var todos = require('../colastyle-demo/reducers/todos').default;
-var visibilityFilter = require('../colastyle-demo/reducers/visibilityFilter').default;
+import App from '../colastyle-demo/components/App';
+import todos from '../colastyle-demo/reducers/todos';
+import visibilityFilter from '../colastyle-demo/reducers/visibilityFilter';
 import { GetTodoList, CreateTodo, SetCompleted } from '../../api'
-
-// let store = createStore(todoApp)
+var { ReduxAsyncConnect, asyncConnect, reducer, store  } = require('koa-cola').Decorators.view;
 
 export interface Props { 
   dispatch? : any
@@ -34,19 +31,12 @@ export interface States { }
 }])
 class ColastyleDemo extends React.Component<Props, States>   {
   constructor(props: Props) {
-    
     super(props);
   }
-  static defaultProps = {
-
-  };
   static _reducer = {
     todos, visibilityFilter
   }
   static childrenComponents = {AddTodo, FilterLink, VisibleTodoList}
-  componentDidMount() {
-    
-  }
   render() {
     return <App />
   }
