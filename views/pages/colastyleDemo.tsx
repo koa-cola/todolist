@@ -26,13 +26,15 @@ export interface States {}
   {
     key: 'todosData',
     promise: async ({ params, helpers, store: { dispatch } }) => {
-      var api = new GetTodoList({});
-      var data = await api.fetch(helpers.ctx);
-      dispatch({
-        type: 'INIT_TODO',
-        data: data.result.result
-      });
-      return data.result.result;
+      if(typeof window == 'undefined'){
+        var api = new GetTodoList({});
+        var data = await api.fetch(helpers.ctx);
+        dispatch({
+          type: 'INIT_TODO',
+          data: data.result.result
+        });
+        return data.result.result;
+      }
     }
   }
 ])
