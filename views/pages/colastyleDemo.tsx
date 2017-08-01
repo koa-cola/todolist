@@ -26,7 +26,6 @@ export interface States {}
   {
     key: 'todosData',
     promise: async ({ params, helpers, store: { dispatch } }) => {
-      if(typeof window == 'undefined'){
         var api = new GetTodoList({});
         var data = await api.fetch(helpers.ctx);
         dispatch({
@@ -34,7 +33,6 @@ export interface States {}
           data: data.result.result
         });
         return data.result.result;
-      }
     }
   }
 ])
