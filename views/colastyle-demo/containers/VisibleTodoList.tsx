@@ -7,7 +7,7 @@ var {
   asyncConnect,
   reducer,
   store
-} = require('koa-cola').Decorators.view;
+} = require('koa-cola/dist/client').Decorators.view;
 import { GetTodoList, CreateTodo, SetCompleted } from '../../../api';
 
 const getVisibleTodos = (todos, filter) => {

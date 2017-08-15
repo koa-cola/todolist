@@ -7,7 +7,7 @@ var {
   asyncConnect,
   reducer,
   store
-} = require('koa-cola').Decorators.view;
+} = require('koa-cola/dist/client').Decorators.view;
 
 export interface Props {
   filter?: any;
