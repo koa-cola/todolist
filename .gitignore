@@ -32,7 +32,6 @@ node_modules
 bower_components
 build
 .awcache
-bundle.*
 package-lock.json
 typescript
 routers.json

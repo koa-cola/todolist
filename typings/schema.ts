@@ -1,5 +1,4 @@
-import * as mongoose from 'mongoose'
-
+import * as mongoose from 'mongoose';
 
 export interface todoListSchema {
 
@@ -7,12 +6,16 @@ export interface todoListSchema {
      * completed
      */
 
-    completed: boolean
+    completed:
+        boolean
+
 
     /**
      * text
      */
 
-    text: string
+    text:
+        string
+
 
 }
