@@ -2,11 +2,10 @@ import * as React from 'react';
 import { render } from 'react-dom';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
-var todoApp = require('../official-demo/reducers').default;
-var App = require('../official-demo/components/App').default;
-var todos = require('../official-demo/reducers/todos').default;
-var visibilityFilter = require('../official-demo/reducers/visibilityFilter')
-  .default;
+
+import todoApp from '../official-demo/reducers';
+import App from '../official-demo/components/App';
+
 let store = createStore(todoApp);
 
 export interface Props {}
