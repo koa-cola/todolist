@@ -3,9 +3,9 @@ import { render } from 'react-dom';
 //import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 
-import AddTodo from '../official-demo/containers/AddTodo';
-import FilterLink from '../official-demo/containers/FilterLink';
-import VisibleTodoList from '../official-demo/containers/VisibleTodoList';
+import AddTodo from '../colastyle-demo/containers/AddTodo';
+import FilterLink from '../colastyle-demo/containers/FilterLink';
+import VisibleTodoList from '../colastyle-demo/containers/VisibleTodoList';
 
 import App from '../colastyle-demo/components/App';
 import todos from '../colastyle-demo/reducers/todos';
@@ -26,20 +26,7 @@ export interface Props {
 }
 export interface States {}
 
-@asyncConnect([
-  {
-    key: 'todosData',
-    promise: async ({ params, helpers, store: { dispatch } }) => {
-      const api = new GetTodoList({});
-      const data = await api.fetch(helpers.ctx);
-      dispatch({
-        type: 'INIT_TODO',
-        data: data.result.result
-      });
-      return data.result.result;
-    }
-  }
-])
+@asyncConnect([])
 @colaReducer({
   todos,
   visibilityFilter

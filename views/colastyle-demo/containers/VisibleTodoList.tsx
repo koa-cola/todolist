@@ -2,13 +2,9 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 import { toggleTodo } from '../actions';
 import TodoList from '../components/TodoList';
-var {
-  ReduxAsyncConnect,
-  asyncConnect,
-  reducer,
-  store
-} = require('koa-cola/dist/client').Decorators.view;
 import { GetTodoList, CreateTodo, SetCompleted } from '../../../api';
+
+const { asyncConnect } = require('koa-cola/dist/client').Decorators.view;
 
 const getVisibleTodos = (todos, filter) => {
   switch (filter) {
@@ -46,7 +42,26 @@ export interface Props {
   todos?: any;
 }
 export interface States {}
-@asyncConnect([], mapStateToProps, mapDispatchToProps)
+
+// 获取所有todo
+@asyncConnect(
+  [
+    {
+      key: 'todosData',
+      promise: async ({ params, helpers, store: { dispatch } }) => {
+        const api = new GetTodoList({});
+        const data = await api.fetch(helpers.ctx);
+        dispatch({
+          type: 'INIT_TODO',
+          data: data.result.result
+        });
+        return data.result.result;
+      }
+    }
+  ],
+  mapStateToProps,
+  mapDispatchToProps
+)
 class VisibleTodoList extends React.Component<Props, States> {
   constructor(props: Props) {
     super(props);
