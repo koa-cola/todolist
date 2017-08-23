@@ -4,16 +4,19 @@ const todos = (state = [], action) => {
       return [
         ...state,
         {
-          id: action.id,
+          _id: action._id,
           text: action.text,
           completed: false
         }
       ];
     case 'TOGGLE_TODO':
+    
       return state.map(
         todo =>
-          todo.id === action.id ? { ...todo, completed: !todo.completed } : todo
+          todo._id === action._id ? { ...todo, completed: !todo.completed } : todo
       );
+    case 'INIT_TODO':
+      return action.data;
     default:
       return state;
   }

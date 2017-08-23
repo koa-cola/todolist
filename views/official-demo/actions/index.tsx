@@ -1,10 +1,13 @@
 let nextTodoId = 0;
-export const addTodo = text => {
-  return {
+
+import { GetTodoList, CreateTodo, SetCompleted } from '../../../api';
+export const addTodo = text => async dispatch => {
+  const data = await new CreateTodo({ text }).fetch();
+  dispatch({
     type: 'ADD_TODO',
-    id: nextTodoId++,
-    text
-  };
+    text,
+    ...data.result.result
+  });
 };
 
 export const setVisibilityFilter = filter => {
@@ -14,9 +17,21 @@ export const setVisibilityFilter = filter => {
   };
 };
 
-export const toggleTodo = id => {
-  return {
+export const toggleTodo = (_id, todos) => async dispatch => {
+  await new SetCompleted({
+        _id,
+        completed: !todos.find(todo => todo._id == _id).completed
+      }).fetch();
+  dispatch( {
     type: 'TOGGLE_TODO',
-    id
-  };
+    _id
+  });
+};
+
+export const getAllTodo = () => async dispatch => {
+  const data = await new GetTodoList({}).fetch();
+  dispatch({
+    type: 'INIT_TODO',
+    data: data.result.result
+  });
 };
