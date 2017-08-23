@@ -26,7 +26,19 @@ export interface Props {
 }
 export interface States {}
 
-@asyncConnect([])
+@asyncConnect([
+  {
+    key: 'todosData',
+    promise: async ({ params, helpers, store: { dispatch } }) => {
+      const {result: {result}} = await new GetTodoList({}).fetch(helpers.ctx);
+      dispatch({
+        type: 'INIT_TODO',
+        data: result
+      });
+      return result;
+    }
+  }
+])
 @colaReducer({
   todos,
   visibilityFilter

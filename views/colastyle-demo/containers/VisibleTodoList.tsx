@@ -26,13 +26,12 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     onTodoClick: async (_id, todos) => {
-      var toggle = toggleTodo(_id);
-      var api = new SetCompleted({
+      await new SetCompleted({
         _id,
         completed: !todos.find(todo => todo._id == _id).completed
-      });
-      await api.fetch();
-      dispatch(toggle);
+      }).fetch();
+
+      dispatch(toggleTodo(_id));
     }
   };
 };
@@ -44,24 +43,7 @@ export interface Props {
 export interface States {}
 
 // 获取所有todo
-@asyncConnect(
-  [
-    {
-      key: 'todosData',
-      promise: async ({ params, helpers, store: { dispatch } }) => {
-        const api = new GetTodoList({});
-        const data = await api.fetch(helpers.ctx);
-        dispatch({
-          type: 'INIT_TODO',
-          data: data.result.result
-        });
-        return data.result.result;
-      }
-    }
-  ],
-  mapStateToProps,
-  mapDispatchToProps
-)
+@asyncConnect([], mapStateToProps, mapDispatchToProps)
 class VisibleTodoList extends React.Component<Props, States> {
   constructor(props: Props) {
     super(props);
