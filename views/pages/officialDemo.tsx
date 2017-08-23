@@ -11,7 +11,6 @@ import App from '../official-demo/components/App';
 import { getAllTodo } from '../official-demo/actions';
 
 let store = createStore(todoApp, applyMiddleware(ReduxThunk));
-store.dispatch(getAllTodo());
 
 export interface Props {}
 export interface States {}
@@ -21,6 +20,9 @@ class OfficialDemo extends React.Component<Props, States> {
     super(props);
   }
   static defaultProps = {};
+  componentWillMount(){
+    store.dispatch(getAllTodo());
+  }
   render() {
     return (
       <Provider store={store}>
