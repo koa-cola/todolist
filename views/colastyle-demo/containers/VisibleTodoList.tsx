@@ -42,7 +42,6 @@ export interface Props {
 }
 export interface States {}
 
-// 获取所有todo
 @asyncConnect([], mapStateToProps, mapDispatchToProps)
 class VisibleTodoList extends React.Component<Props, States> {
   constructor(props: Props) {
