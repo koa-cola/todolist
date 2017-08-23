@@ -2,7 +2,7 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 import { setVisibilityFilter } from '../actions';
 import Link from '../components/Link';
-var {
+const {
   ReduxAsyncConnect,
   asyncConnect,
   reducer,
