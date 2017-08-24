@@ -43,6 +43,8 @@ export interface States {}
   todos,
   visibilityFilter
 })
+// 如果子组件要使用 @asyncConnect 进行服务器端渲染，
+// 则需要把该组件包含进装饰器 include。（以下三个实际并未使用）
 @include({ AddTodo, FilterLink, VisibleTodoList })
 class ColastyleDemo extends React.Component<Props, States> {
   constructor(props: Props) {
