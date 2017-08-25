@@ -10,11 +10,14 @@ const todos = (state = [], action) => {
         }
       ];
     case 'TOGGLE_TODO':
-    
       return state.map(
         todo =>
-          todo._id === action._id ? { ...todo, completed: !todo.completed } : todo
+          todo._id === action._id
+            ? { ...todo, completed: !todo.completed }
+            : todo
       );
+    case 'DEL_TODO':
+      return state.filter(todo => todo._id !== action._id);
     case 'INIT_TODO':
       return action.data;
     default:

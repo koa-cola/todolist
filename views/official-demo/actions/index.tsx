@@ -1,6 +1,6 @@
 let nextTodoId = 0;
 
-import { GetTodoList, CreateTodo, SetCompleted } from '../../../api';
+import { GetTodoList, CreateTodo, SetCompleted, DeleteTodo } from '../../../api';
 export const addTodo = text => async dispatch => {
   const data = await new CreateTodo({ text }).fetch();
   dispatch({
@@ -33,5 +33,13 @@ export const getAllTodo = () => async dispatch => {
   dispatch({
     type: 'INIT_TODO',
     data: data.result.result
+  });
+};
+
+export const deleteTodo = _id => async dispatch => {
+  await new DeleteTodo({ _id }).fetch();
+  dispatch({
+    type: 'DEL_TODO',
+    _id
   });
 };
