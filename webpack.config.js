@@ -1,5 +1,6 @@
 const webpack = require('webpack');
 var BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 module.exports = {
 	entry: ['babel-polyfill', './views/app.tsx'],
@@ -34,7 +35,17 @@ module.exports = {
 					loader: 'babel-loader'
 				},
 				exclude: /node_modules\/(?!(koa-cola)\/).*/,
-			},
+      },
+      {
+        test: /\.css$/,
+        use: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: [
+            { loader: 'css-loader', options: { importLoaders: 1 } },
+            'postcss-loader'
+          ]
+        })
+      },
 
 			// All output '.js' files will have any sourcemaps re-processed by 'source-map-loader'.
 			{ enforce: 'pre', test: /\.js$/, loader: 'source-map-loader' }
@@ -80,7 +91,8 @@ module.exports = {
 			statsOptions: null,
 			// Log level. Can be 'info', 'warn', 'error' or 'silent'. 
 			logLevel: 'info'
-		}), */
+    }), */
+    new ExtractTextPlugin("styles.css"),
 
 	],
 	// When importing a module whose path matches one of the following, just
@@ -90,5 +102,5 @@ module.exports = {
 	externals: {
 		// 'react': 'React',
 		// 'react-dom': 'ReactDOM'
-	},
+  },
 };
