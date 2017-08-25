@@ -3,15 +3,15 @@ import * as PropTypes from 'prop-types';
 import Todo from './Todo';
 
 const TodoList: any = ({ todos, onTodoClick }) =>
-  <ul>
-    {todos.map(todo =>
-      <Todo
-        key={todo._id}
-        {...todo}
-        onClick={() => onTodoClick(todo._id, todos)}
-      />
-    )}
-  </ul>;
+  <ul className="todo-list">
+      {todos.map(todo =>
+        <Todo
+          key={todo._id}
+          {...todo}
+          onClickHandler={() => onTodoClick(todo._id, todos)}
+        />
+      )}
+    </ul>
 
 TodoList.propTypes = {
   todos: PropTypes.arrayOf(

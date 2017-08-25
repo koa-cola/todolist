@@ -46,6 +46,8 @@ class AddTodo extends React.Component<Props, States> {
           }}
         >
           <input
+            className="new-todo"
+            placeholder="需要做什么?"
             ref={node => {
               input = node;
             }}

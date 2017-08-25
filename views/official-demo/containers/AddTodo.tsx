@@ -4,7 +4,7 @@ import { addTodo } from '../actions';
 
 let AddTodo = (args?) => {
   let input;
-  var { dispatch } = args;
+  const { dispatch } = args;
   return (
     <div>
       <form
@@ -18,6 +18,8 @@ let AddTodo = (args?) => {
         }}
       >
         <input
+          className="new-todo"
+          placeholder="需要做什么?"
           ref={node => {
             input = node;
           }}

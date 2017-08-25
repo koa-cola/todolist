@@ -1,0 +1,32 @@
+.header {
+  position: relative;
+}
+.header form button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  padding: 12px;
+  box-shadow: -4px 0px 4px -4px rgba(0, 0, 0, 0.1);
+  transition:box-shadow .1s ease;
+  cursor: pointer;
+}
+.header form button:hover {
+  box-shadow: -4px 0px 4px -3px rgba(0, 0, 0, 0.2);
+}
+
+.new-todo {
+  padding-right: 80px;
+}
+.filters li>a,.filters li>span {
+	color: inherit;
+	margin: 3px;
+	padding: 3px 7px;
+	text-decoration: none;
+	border: 1px solid transparent;
+	border-radius: 3px;
+}
+
+.filters li>span {
+	border-color: rgba(175, 47, 47, 0.2);
+}
