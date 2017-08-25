@@ -19,3 +19,10 @@ export const toggleTodo = _id => {
     _id
   };
 };
+
+export const deleteTodo = _id => {
+  return {
+    type: 'DEL_TODO',
+    _id
+  };
+};

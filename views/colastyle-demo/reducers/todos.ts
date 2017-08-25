@@ -18,6 +18,11 @@ const todos = (state = [], action) => {
             ? { ...todo, completed: !todo.completed }
             : todo
       );
+    case 'DEL_TODO':
+      return state.filter(
+        todo =>
+          todo._id !== action._id
+      );
     default:
       return state;
   }

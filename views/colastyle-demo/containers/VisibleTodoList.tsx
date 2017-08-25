@@ -1,8 +1,13 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-import { toggleTodo } from '../actions';
+import { toggleTodo, deleteTodo } from '../actions';
 import TodoList from '../components/TodoList';
-import { GetTodoList, CreateTodo, SetCompleted } from '../../../api';
+import {
+  GetTodoList,
+  CreateTodo,
+  SetCompleted,
+  DeleteTodo
+} from '../../../api';
 
 const { asyncConnect } = require('koa-cola/dist/client').Decorators.view;
 
@@ -32,12 +37,18 @@ const mapDispatchToProps = dispatch => {
       }).fetch();
 
       dispatch(toggleTodo(_id));
+    },
+    onTodoDel: async (_id) => {
+      await new DeleteTodo({ _id }).fetch();
+
+      dispatch(deleteTodo(_id));
     }
   };
 };
 
 export interface Props {
   onTodoClick?: any;
+  onTodoDel?: any;
   todos?: any;
 }
 export interface States {}

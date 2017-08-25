@@ -48,4 +48,11 @@ export default class {
     var todoListManager = new app.managers.TodoListManager();
     return await todoListManager.setCompleted(_id, completed);
   }
+
+  @Get('/api/deleteTodo')
+  @Response(Ok)
+  async smashTodo(@QueryParam() { _id }: any) {
+    var todoListManager = new app.managers.TodoListManager();
+    return await todoListManager.smashTodo(_id);
+  }
 }

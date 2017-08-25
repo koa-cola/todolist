@@ -45,3 +45,18 @@ export class SetCompleted extends ApiBase<
   url: string = '/api/setCompleted';
   method: string = 'get';
 }
+
+export class DeleteTodo extends ApiBase<
+  { _id: string },
+  {
+    code: number;
+    result: todoListSchema;
+  },
+  {}
+> {
+  constructor(body) {
+    super(body);
+  }
+  url: string = '/api/deleteTodo';
+  method: string = 'get';
+}

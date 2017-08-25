@@ -20,4 +20,10 @@ export default class {
     var result = await TodoList.update({ _id }, { $set: { completed } });
     return result;
   }
+
+  async smashTodo(_id) {
+    var TodoList = app.models.TodoList;
+    var result = await TodoList.remove({ _id });
+    return result;
+  }
 }
