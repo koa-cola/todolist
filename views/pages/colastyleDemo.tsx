@@ -12,11 +12,7 @@ import todos from '../colastyle-demo/reducers/todos';
 import visibilityFilter from '../colastyle-demo/reducers/visibilityFilter';
 import { GetTodoList, CreateTodo, SetCompleted } from '../../api';
 const {
-  //ReduxAsyncConnect,
-  //reducer,
-  //store,
-  asyncConnect,
-  colaReducer,
+  Cola,
   include
 } = require('koa-cola/dist/client').Decorators.view;
 
@@ -26,22 +22,22 @@ export interface Props {
 }
 export interface States {}
 
-@asyncConnect([
-  {
-    key: 'todosData',
-    promise: async ({ params, helpers, store: { dispatch } }) => {
-      const {result: {result}} = await new GetTodoList({}).fetch(helpers.ctx);
-      dispatch({
-        type: 'INIT_TODO',
-        data: result
-      });
-      return result;
-    }
+@Cola({
+  initData : {
+      todosData : async ({ params, helpers, store: { dispatch } }) => {
+          const api = new GetTodoList({});
+          const data = await api.fetch(helpers.ctx);
+          dispatch({
+              type: 'INIT_TODO',
+              data: data.result.result
+          });
+          return data.result.result;
+      }
+  },
+  reducer : {
+      todos,
+      visibilityFilter
   }
-])
-@colaReducer({
-  todos,
-  visibilityFilter
 })
 // 如果子组件要使用 @asyncConnect 进行服务器端渲染，
 // 则需要把该组件包含进装饰器 include。（以下三个实际并未使用）

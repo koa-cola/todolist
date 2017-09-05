@@ -20,7 +20,7 @@ class OfficialDemo extends React.Component<Props, States> {
     super(props);
   }
   static defaultProps = {};
-  componentWillMount(){
+  componentDidMount(){
     store.dispatch(getAllTodo());
   }
   render() {
