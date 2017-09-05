@@ -1,8 +1,6 @@
 import * as React from 'react';
 const {
-  ReduxAsyncConnect,
-  asyncConnect,
-  reducer,
+  Cola,
   store
 } = require('koa-cola/dist/client').Decorators.view;
 import { addTodo } from '../actions';
@@ -11,20 +9,18 @@ export interface Props {
   addTodo?: any;
 }
 export interface States {}
-@asyncConnect(
-  [],
-  // mapStateToProps
-  null,
-  // mapDispatchToProps
-  dispatch => {
-    return {
-      addTodo: async text => {
-        var api = new CreateTodo({ text });
-        var data = await api.fetch();
-        var result = data.result.result;
-        dispatch(Object.assign(addTodo(text), result));
-      }
-    };
+@Cola(
+  {
+    mapDispatchToProps : dispatch => {
+      return {
+        addTodo: async text => {
+          var api = new CreateTodo({ text });
+          var data = await api.fetch();
+          var result = data.result.result;
+          dispatch(Object.assign(addTodo(text), result));
+        }
+      };
+    }
   }
 )
 class AddTodo extends React.Component<Props, States> {

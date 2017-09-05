@@ -23912,9 +23912,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var React = __webpack_require__(6);
 
 var _require$Decorators$v = __webpack_require__(72).Decorators.view,
-    ReduxAsyncConnect = _require$Decorators$v.ReduxAsyncConnect,
-    asyncConnect = _require$Decorators$v.asyncConnect,
-    reducer = _require$Decorators$v.reducer,
+    Cola = _require$Decorators$v.Cola,
     store = _require$Decorators$v.store;
 
 var actions_1 = __webpack_require__(224);
@@ -23949,42 +23947,40 @@ var AddTodo = function (_React$Component) {
 
     return AddTodo;
 }(React.Component);
-AddTodo = __decorate([asyncConnect([],
-// mapStateToProps
-null,
-// mapDispatchToProps
-function (dispatch) {
-    return {
-        addTodo: function () {
-            var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(text) {
-                var api, data, result;
-                return regeneratorRuntime.wrap(function _callee$(_context) {
-                    while (1) {
-                        switch (_context.prev = _context.next) {
-                            case 0:
-                                api = new api_1.CreateTodo({ text: text });
-                                _context.next = 3;
-                                return api.fetch();
+AddTodo = __decorate([Cola({
+    mapDispatchToProps: function mapDispatchToProps(dispatch) {
+        return {
+            addTodo: function () {
+                var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(text) {
+                    var api, data, result;
+                    return regeneratorRuntime.wrap(function _callee$(_context) {
+                        while (1) {
+                            switch (_context.prev = _context.next) {
+                                case 0:
+                                    api = new api_1.CreateTodo({ text: text });
+                                    _context.next = 3;
+                                    return api.fetch();
 
-                            case 3:
-                                data = _context.sent;
-                                result = data.result.result;
+                                case 3:
+                                    data = _context.sent;
+                                    result = data.result.result;
 
-                                dispatch(Object.assign(actions_1.addTodo(text), result));
+                                    dispatch(Object.assign(actions_1.addTodo(text), result));
 
-                            case 6:
-                            case "end":
-                                return _context.stop();
+                                case 6:
+                                case "end":
+                                    return _context.stop();
+                            }
                         }
-                    }
-                }, _callee, undefined);
-            }));
+                    }, _callee, undefined);
+                }));
 
-            return function addTodo(_x) {
-                return _ref.apply(this, arguments);
-            };
-        }()
-    };
+                return function addTodo(_x) {
+                    return _ref.apply(this, arguments);
+                };
+            }()
+        };
+    }
 }), __metadata("design:paramtypes", [Object])], AddTodo);
 exports.default = AddTodo;
 
@@ -24022,9 +24018,7 @@ var actions_1 = __webpack_require__(224);
 var Link_1 = __webpack_require__(853);
 
 var _require$Decorators$v = __webpack_require__(72).Decorators.view,
-    ReduxAsyncConnect = _require$Decorators$v.ReduxAsyncConnect,
-    asyncConnect = _require$Decorators$v.asyncConnect,
-    reducer = _require$Decorators$v.reducer,
+    Cola = _require$Decorators$v.Cola,
     store = _require$Decorators$v.store;
 
 var FilterLink = function (_React$Component) {
@@ -24046,20 +24040,19 @@ var FilterLink = function (_React$Component) {
     return FilterLink;
 }(React.Component);
 FilterLink.defaultProps = {};
-FilterLink = __decorate([asyncConnect([],
-// mapStateToProps
-function (state, ownProps) {
-    return {
-        active: ownProps.filter === state.visibilityFilter
-    };
-},
-// mapDispatchToProps
-function (dispatch, ownProps) {
-    return {
-        onClick: function onClick() {
-            dispatch(actions_1.setVisibilityFilter(ownProps.filter));
-        }
-    };
+FilterLink = __decorate([Cola({
+    mapStateToProps: function mapStateToProps(state, ownProps) {
+        return {
+            active: ownProps.filter === state.visibilityFilter
+        };
+    },
+    mapDispatchToProps: function mapDispatchToProps(dispatch, ownProps) {
+        return {
+            onClick: function onClick() {
+                dispatch(actions_1.setVisibilityFilter(ownProps.filter));
+            }
+        };
+    }
 }), __metadata("design:paramtypes", [Object])], FilterLink);
 exports.default = FilterLink;
 
@@ -24099,7 +24092,7 @@ var actions_1 = __webpack_require__(224);
 var TodoList_1 = __webpack_require__(854);
 var api_1 = __webpack_require__(146);
 
-var asyncConnect = __webpack_require__(72).Decorators.view.asyncConnect;
+var Cola = __webpack_require__(72).Decorators.view.Cola;
 
 var getVisibleTodos = function getVisibleTodos(todos, filter) {
     switch (filter) {
@@ -24196,7 +24189,7 @@ var VisibleTodoList = function (_React$Component) {
     return VisibleTodoList;
 }(React.Component);
 VisibleTodoList.defaultProps = {};
-VisibleTodoList = __decorate([asyncConnect([], mapStateToProps, mapDispatchToProps), __metadata("design:paramtypes", [Object])], VisibleTodoList);
+VisibleTodoList = __decorate([Cola({ mapStateToProps: mapStateToProps, mapDispatchToProps: mapDispatchToProps }), __metadata("design:paramtypes", [Object])], VisibleTodoList);
 exports.default = VisibleTodoList;
 
 /***/ }),

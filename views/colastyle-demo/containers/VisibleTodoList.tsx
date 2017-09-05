@@ -9,7 +9,7 @@ import {
   DeleteTodo
 } from '../../../api';
 
-const { asyncConnect } = require('koa-cola/dist/client').Decorators.view;
+const { Cola } = require('koa-cola/dist/client').Decorators.view;
 
 const getVisibleTodos = (todos, filter) => {
   switch (filter) {
@@ -53,7 +53,7 @@ export interface Props {
 }
 export interface States {}
 
-@asyncConnect([], mapStateToProps, mapDispatchToProps)
+@Cola({mapStateToProps, mapDispatchToProps})
 class VisibleTodoList extends React.Component<Props, States> {
   constructor(props: Props) {
     super(props);
