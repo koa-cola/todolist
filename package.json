@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "webpack --progress --profile --colors --watch",
+    "build": "webpack",
     "local": "NODE_ENV=local ./node_modules/ts-node/dist/bin.js ./app.ts",
     "open": "webpack;koa-cola",
     "cheer": "npm run open"
