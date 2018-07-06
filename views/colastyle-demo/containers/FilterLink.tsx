@@ -5,7 +5,7 @@ import Link from '../components/Link';
 const {
   Cola,
   store
-} = require('koa-cola/dist/client').Decorators.view;
+} = require('koa-cola/client').Decorators.view;
 
 export interface Props {
   filter?: any;

@@ -1,5 +1,5 @@
 import { todoListSchema } from './typings/schema';
-import { ApiBase, apiFetch } from 'koa-cola/dist/client';
+import { ApiBase, apiFetch } from 'koa-cola/client';
 
 export class GetTodoList extends ApiBase<
   {},
