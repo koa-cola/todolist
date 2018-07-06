@@ -1,8 +1,5 @@
 import * as React from 'react';
-const {
-  Cola,
-  store
-} = require('koa-cola/client').Decorators.view;
+import { Cola } from "koa-cola/client";
 import { addTodo } from '../actions';
 import { GetTodoList, CreateTodo, SetCompleted } from '../../../api';
 export interface Props {

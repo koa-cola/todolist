@@ -11,10 +11,8 @@ import App from '../colastyle-demo/components/App';
 import todos from '../colastyle-demo/reducers/todos';
 import visibilityFilter from '../colastyle-demo/reducers/visibilityFilter';
 import { GetTodoList, CreateTodo, SetCompleted } from '../../api';
-const {
-  Cola,
-  include
-} = require('koa-cola/client').Decorators.view;
+
+import { Cola, include } from "koa-cola/client";
 
 export interface Props {
   dispatch?: any;

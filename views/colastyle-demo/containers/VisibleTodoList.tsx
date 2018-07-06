@@ -9,7 +9,7 @@ import {
   DeleteTodo
 } from '../../../api';
 
-const { Cola } = require('koa-cola/client').Decorators.view;
+import { Cola } from "koa-cola/client";
 
 const getVisibleTodos = (todos, filter) => {
   switch (filter) {
